@@ -1,0 +1,73 @@
+﻿@model List<MisafirDetay>
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header bg-dark">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6 mt-2 ml-3">
+                <h1 class="font-weight-bold">Konaklayan Misafir Listesi</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="misafirList2" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                REZ ID
+                            </th>
+                            <th>
+                                MİSAFİR ID
+                            </th>
+                            <th>
+                                AD
+                            </th>
+                            <th>
+                                SOYAD
+                            </th>
+                            <th>
+                                DOĞUM TARİHİ
+                            </th>
+                            <th>
+                                CİNSİYET
+                            </th>
+                            <th>
+                                UYRUK
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var misafir in Model)
+                        {
+                            <tr>
+                                <td>@misafir.RezervasyonId</td>
+                                <td>@misafir.MusteriId</td>
+                                <td>@misafir.Ad.ToUpper()</td>
+                                <td>@misafir.Soyad.ToUpper()</td>
+                                <td>@misafir.DogumTarihi</td>
+                                <td>@misafir.Cinsiyet</td>
+                                <td>@misafir.Uyruk</td>               
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

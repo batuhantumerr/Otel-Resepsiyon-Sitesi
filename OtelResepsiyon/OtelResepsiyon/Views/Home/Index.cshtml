@@ -1,0 +1,370 @@
+﻿@model Tuple<List<Rezervasyon>, List<Rezervasyon>>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>AdminLTE 3 | Dashboard 2</title>
+
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/lib/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/lib/dist/css/adminlte.min.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" >
+
+    <section class="content ml-2 mr-2">
+
+        <!-- Info boxes -->
+        <div class="row mb-2">
+            <div id="id6c5e1e429b595"
+                 a='{"t":"r","v":"1.2","lang":"tr","locs":[4870],"ssot":"c","sics":"ds","cbkg":"rgb(69,90,100)","cfnt":"#FFFFFF","codd":"rgb(84,110,122)","cont":"#E0E0E0","stof":"5","sfnt":"a"}'>
+                Hava Durumu Veri Kaynağı: <a href="https://sharpweather.com/weather_konya/30_days/">
+                    weather 30 days
+                    Konya
+                </a>
+            </div>
+            <script async src="https://static1.sharpweather.com/widgetjs/?id=id6c5e1e429b595"></script>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3 mt-2">
+                <a href="/Rezervasyon/AktifRezervasyonlar" class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-hotel"></i></span>
+                    <div class="info-box-content text-dark font-weight-bold">
+                        <span class="info-box-text ">Aktif Rezervasyonlar</span>
+                        <span class="info-box-number">@ViewBag.BekleyenRezervasyonSayisi</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3 mt-2">
+                <a href="/Rezervasyon/KullanimdaRezervasyonlar" class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-hotel"></i></span>
+                    <div class="info-box-content text-dark font-weight-bold">
+                        <span class="info-box-text">Kullanımda Rezervasyonlar</span>
+                        <span class="info-box-number">@ViewBag.OnaylanmisRezervasyonSayisi</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up "></div>
+
+            <div class="col-12 col-sm-6 col-md-3 mt-2">
+                <a href="/Rezervasyon/IptalRezervasyonlar" class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-hotel"></i></span>
+                    <div class="info-box-content text-dark font-weight-bold">
+                        <span class="info-box-text">İptal Edilen Rezervasyonlar</span>
+                        <span class="info-box-number">@ViewBag.IptalRezervasyonSayisi   <small>(Son 30 Gün)</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3 mt-2">
+                <a href="/Rezervasyon/GecmisRezervasyonlar" class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hotel"></i></span>
+                    <div class="info-box-content text-dark font-weight-bold">
+                        <span class="info-box-text">Geçmiş Rezervasyonlar</span>
+                        <span class="info-box-number">@ViewBag.GecmisRezervasyonSayisi <small>(Son 30 Gün)</small></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3 mt-2">
+                <!-- Info Boxes Style 2 -->
+                <a class="info-box mb-3 bg-success">
+                    <span class="info-box-icon"><i class="fas fa-users"></i></span>
+
+                    <div class="info-box-content text-white font-weight-bold">
+                        <span class="info-box-text">Aktif Konaklayan Sayısı</span>
+                        <span class="info-box-number">@ViewBag.AktifKonaklayanSayisi</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+                <a class="info-box mb-3 bg-info">
+                    <span class="info-box-icon"><i class="fas fa-hotel"></i></span>
+
+                    <div class="info-box-content text-white font-weight-bold">
+                        <span class="info-box-text">Toplam Kapasite</span>
+                        <span class="info-box-number">@ViewBag.ToplamKapasite</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+                <a class="info-box mb-3 bg-danger">
+                    <span class="info-box-icon"><i class="fas fa-door-closed"></i></span>
+
+                    <div class="info-box-content text-white font-weight-bold">
+                        <span class="info-box-text">Oda Sayısı</span>
+                        <span class="info-box-number">@ViewBag.ToplamOdaSayisi</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </a>
+                <!-- /.info-box -->
+                <!-- /.info-box -->
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card" style="height: 280px; margin:10px 0;">
+                    <!-- <div class="card-header">
+                      <h3 class="card-title font-weight-bold">Doluluk</h3>
+                    </div> -->
+                    <!-- /.card-header -->
+                    <div class="card-body ">
+                        <div class="row">
+                            <canvas id="pieChart" height="240"></canvas>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <!-- /.footer -->
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div id="date"></div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 ">
+                <iframe src="https://api.genelpara.com/iframe/?symbol=para-birimleri&pb=USD,EUR,GBP&stil=stil-5&renk=beyaz" title="Döviz ve Altın Fiyatları" frameborder="0" style="width:100%; height:300px;"></iframe>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title font-weight-bold">Bugün Giriş Yapacaklar</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Giriş Tarihi</th>
+                                        <th scope="col">Çıkış Tarihi</th>
+                                        <th scope="col">Ad Soyad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var rezervasyon in Model.Item1)
+                                    {
+                                        <tr onclick="window.location.href='/Rezervasyon/AktifRezervasyonlar';" style="cursor: pointer;">
+                                            <td>@rezervasyon.RezervasyonId</td>
+                                            <td>@rezervasyon.GirisTarihi.ToShortDateString()</td>
+                                            <td>@rezervasyon.CikisTarihi.ToShortDateString()</td>
+                                            <td>@rezervasyon.Ad_Soyad</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title font-weight-bold">Bugün çıkış yapacaklar</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Giriş Tarihi</th>
+                                        <th scope="col">Çıkış Tarihi</th>
+                                        <th scope="col">Ad Soyad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var rezervasyon in Model.Item2)
+                                    {
+                                        <tr onclick="window.location.href='/Rezervasyon/KullanimdaRezervasyonlar';" style="cursor: pointer;">
+                                            <td>@rezervasyon.RezervasyonId</td>
+                                            <td>@rezervasyon.GirisTarihi.ToShortDateString()</td>
+                                            <td>@rezervasyon.CikisTarihi.ToShortDateString()</td>
+                                            <td>@rezervasyon.Ad_Soyad</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- /.content -->
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+
+
+    <script>
+        var date = new Date();
+        var day = date.getDate();
+        var year = date.getFullYear();
+
+        var month = date.getMonth();
+        var monthLabels = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+
+        var weekDay = date.getDay();
+        var weekDayLabels = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+
+        //create function to grab day, month, date, year
+        function Day() {
+            month = monthLabels[month];
+            weekDay = weekDayLabels[weekDay];
+
+            // document.getElementById("day").innerHTML = "Today is " + "<span>" + weekDay.toUpperCase() + "</span>";
+            // document.getElementById("date").innerHTML = "<span>" + day + "</span>" + month.toUpperCase() + " " + year + " " + weekDay.toUpperCase();
+            var formattedDate = "<span>" + day + "</span>" + month.toUpperCase() + " " + year;
+            formattedDate += "<br>" + weekDay.toUpperCase();
+            document.getElementById("date").innerHTML = formattedDate;
+        }
+
+        Day();
+    </script>
+
+    <style>
+        body {
+            background: #A4D7ED;
+            /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(left, #A4D7ED, #DEC5E3);
+            /*Safari 5.1-6*/
+            background: -o-linear-gradient(right, #A4D7ED, #DEC5E3);
+            /*Opera 11.1-12*/
+            background: -moz-linear-gradient(right, #A4D7ED, #DEC5E3);
+            /*Fx 3.6-15*/
+            background: linear-gradient(to right, #ffff, #DEC5E3);
+            /*Standard*/
+        }
+
+        #date {
+            margin: 10px 0;
+            height: 280px;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 10%;
+            box-shadow: 2px 2px 2px #324376, -2px 2px 2px #324376, -2px -2px 2px #324376, 2px -2px 2px #324376;
+            background: #fff;
+            font-size: 30px;
+            font-weight: 700;
+            color: #455A64;
+        }
+
+            #date span {
+                padding-top: 60px;
+                margin-bottom: 60px;
+                display: block;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: 900;
+                font-size: 170px;
+                line-height: 35px;
+                padding-bottom: 10px;
+            }
+    </style>
+
+    <!-- jQuery -->
+    <script src="~/lib/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/lib/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/lib/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="~/lib/dist/js/demo.js"></script>
+
+
+
+    <!-- ChartJS -->
+    <script src="~/lib/plugins/chart.js/Chart.min.js"></script>
+
+    <script>
+        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieData = {
+            labels: [
+                'Dolu',
+                'Boş',
+            ],
+            datasets: [
+                {
+                    data: [@ViewBag.DoluOdaSayisi, @ViewBag.BosOdaSayisi],
+                    backgroundColor: ['#f56954', '#00a65a'],
+                }
+            ]
+        }
+        var pieOptions = {
+            legend: {
+                display: false
+            }
+        }
+        Chart.pluginService.register({
+            beforeDraw: function (chart) {
+                var width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
+
+                ctx.restore();
+                var fontSize = (height / 114).toFixed(2);
+                ctx.font = fontSize + "em sans-serif";
+                ctx.textBaseline = "middle";
+
+
+                var text = "%" + @ViewBag.DolulukOrani,
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2;
+
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+            }
+        });
+
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var pieChart = new Chart(pieChartCanvas, {
+            type: 'doughnut',
+            data: pieData,
+            options: pieOptions
+        })
+    </script>
+
+</body>
+
+</html>

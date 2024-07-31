@@ -1,0 +1,52 @@
+﻿@model Rezervasyon
+
+<form method="post" action="RezervasyonBilgiGuncelle">
+    <div class="container pt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-dark p-3" style="border-radius:20px;">
+                    <div class="card-header ">
+                        <h2 class="text-center text-uppercase font-weight-bold">Rezervasyon Bilgi Güncelle</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+
+                            <label asp-for="Ad_Soyad" >Ad Soyad :</label>
+                            <input asp-for="Ad_Soyad" class="form-control" />
+
+                            <label asp-for="Telefon" class="pt-3">Telefon :</label>
+                            <input asp-for="Telefon" class="form-control" />
+                            @{
+                                if (Model.Durum == 1)
+                                {
+                                    <label asp-for="AracPlaka" class="pt-3">Araç Plaka :</label>
+                                    <input asp-for="AracPlaka" class="form-control" />
+                                }
+                            }
+
+                            <label asp-for="MisafirSayisi" class="pt-3">Misafir Sayısı :</label>
+                            <input asp-for="MisafirSayisi" class="form-control" />
+                            @{
+                                if (Model.Durum == 0)
+                                {
+                                    <label asp-for="OdenenTutar" class="pt-3">Ödenen Tutar :</label>
+                                    <input asp-for="OdenenTutar" class="form-control" />
+                                }
+                            }                                                         
+   
+                        </div>
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-lg btn-light" style="width:150px">Güncelle</button>
+                            <button asp-controller="Rezervasyon" asp-action="GeriDon" class="btn btn-lg btn-light ml-3" style="width:150px">Geri Dön</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>

@@ -1,0 +1,147 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = OtelResepsiyon
+build_property.RootNamespace = OtelResepsiyon
+build_property.ProjectDir = C:\Users\tmrbt\Desktop\Yeni klasör\OtelResepsiyon\OtelResepsiyon\OtelResepsiyon\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\tmrbt\Desktop\Yeni klasör\OtelResepsiyon\OtelResepsiyon\OtelResepsiyon
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Oda/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Oda/OdaEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhXE9kYUVrbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Oda/OdaGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhXE9kYUd1bmNlbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/AktifRezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cQWt0aWZSZXplcnZhc3lvbmxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/BosOdalariGoster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cQm9zT2RhbGFyaUdvc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/BosOdaTipleriGoster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cQm9zT2RhVGlwbGVyaUdvc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/GecmisMisafirler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cR2VjbWlzTWlzYWZpcmxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/GecmisMisafirleriGoster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cR2VjbWlzTWlzYWZpcmxlcmlHb3N0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/GecmisRezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cR2VjbWlzUmV6ZXJ2YXN5b25sYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/GuncelMisafirler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cR3VuY2VsTWlzYWZpcmxlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/IptalRezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cSXB0YWxSZXplcnZhc3lvbmxhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/KullanimdaRezervasyonlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cS3VsbGFuaW1kYVJlemVydmFzeW9ubGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/MisafirEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cTWlzYWZpckVrbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/MisafirGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cTWlzYWZpckd1bmNlbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/MisafirleriGoster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cTWlzYWZpcmxlcmlHb3N0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/RezBosOdalariGoster.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6Qm9zT2RhbGFyaUdvc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/RezBosOdaTipleri.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6Qm9zT2RhVGlwbGVyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/RezervasyonBilgiGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6ZXJ2YXN5b25CaWxnaUd1bmNlbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/RezervasyonEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6ZXJ2YXN5b25Fa2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/RezervasyonTarihGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cUmV6ZXJ2YXN5b25UYXJpaEd1bmNlbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Rezervasyon/TarihGir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV6ZXJ2YXN5b25cVGFyaWhHaXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Shared/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tmrbt/Desktop/Yeni klasör/OtelResepsiyon/OtelResepsiyon/OtelResepsiyon/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-34byfohyhz

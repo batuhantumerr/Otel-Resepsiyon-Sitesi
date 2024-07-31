@@ -1,0 +1,76 @@
+﻿@model List<Rezervasyon>
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header bg-dark">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6 mt-2 ml-3">
+                <h1 class="font-weight-bold">İPTAL REZERVASYONLAR</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="rezList" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>GİRİŞ TARİHİ</th>
+                            <th>ÇIKIŞ TARİHİ</th>
+                           @*<th>Misafir Sayısı</th> *@
+                            <th>AD SOYAD</th>
+                            <th>TELEFON</th>
+                            <th>ODA TİPİ</th>
+                            <th>DURUM</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var rezervasyon in Model)
+                        {
+                            <tr>
+                                <td>@rezervasyon.RezervasyonId</td>
+                                <td>@rezervasyon.GirisTarihi.ToShortDateString()</td>
+                                <td>@rezervasyon.CikisTarihi.ToShortDateString()</td>
+                                @* <td>@rezervasyon.MisafirSayisi</td> *@
+                                <td>@rezervasyon.Ad_Soyad.ToUpper()</td>
+                                <td>@rezervasyon.Telefon</td>
+                                <td>@rezervasyon.OdaTipi</td>
+
+                                @switch (rezervasyon.Durum)
+                                {
+                                    case 0:
+                                        <td>Aktif</td>
+                                        break;
+
+                                    case 1:
+                                        <td>Kullanımda</td>
+                                        break;
+
+                                    case 2:
+                                        <td>Geçmiş</td>
+                                        break;
+
+                                    case 3:
+                                        <td>İptal</td>
+                                        break;
+                                }
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

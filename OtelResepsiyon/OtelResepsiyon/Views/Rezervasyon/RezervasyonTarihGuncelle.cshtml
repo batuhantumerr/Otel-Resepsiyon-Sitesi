@@ -1,0 +1,39 @@
+﻿@model Rezervasyon
+
+<form method="post" action="RezervasyonTarihGuncelle">
+    <div class="py-5">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-md-5">
+                <div class="card bg-dark text-white p-3" style="border-radius: 1rem; height: 500px;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-2 md-2 pb-5">
+
+                            <h2 class="fw-bold mb-4 text-uppercase font-weight-bold">Rezervasyon Tarih Güncelle</h2>
+
+                            <div class="form-outline form-white mb-4 text-left">
+                                <label asp-for="GirisTarihi" class="form-label text-">Giriş Tarihi</label>
+                                <input asp-for="GirisTarihi" type="date" class="form-control form-control-lg" />
+                            </div>
+
+                            <div class="form-outline form-white mb-4 text-left">
+                                <label asp-for="CikisTarihi" class="form-label">Çıkış Tarihi</label>
+                                <input asp-for="CikisTarihi" class="form-control form-control-lg" type="date" />
+                            </div>
+
+                            <div class="mb-0">
+                                <button class="btn btn-light btn-lg px-5 mt-4" type="submit">Güncelle</button>
+                                <button asp-controller="Rezervasyon" asp-action="GeriDon" class="btn btn-light btn-lg px-5 mt-4 ml-3">Geri Dön</button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+

@@ -1,0 +1,205 @@
+﻿    <!-- Font Awesome -->
+<link rel="stylesheet" href="~/lib/plugins/fontawesome-free/css/all.min.css">
+
+@model List<Oda>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otel Yönetim Sistemi</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+</head>
+<body>
+
+    <div class="container ">
+        <div class="row py-4">
+            <div class="col-md-10" style="display:flex">
+                <p class="mx-2"><i class="fas fa-circle pr-1" style="color:green"></i>Kullanıma Hazır</p>
+                <p class="mx-2"><i class="fas fa-circle pr-1" style="color:red"></i>Kullanımda</p>
+                <p class="mx-2"><i class="fas fa-circle pr-1" style="color:yellow"></i>Temizlenmeli</p>
+                <p class="mx-2"><i class="fas fa-circle pr-1" style="color:grey"></i>Kullanıma Kapalı</p>
+            </div>
+            <div class="col-md-2">
+                <a asp-controller="Oda" asp-action="OdaEkle" class="btn btn-dark">Yeni Oda Ekle</a>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var oda in Model)
+            {
+                <div class="col-md-2 mb-4">
+                    <div class="room-card text-dark">
+                        <div class="card-header" style="padding: 0;">
+                            <div class="dropdown" style="position: absolute; top: 0; right: 0;">
+                                <button class="btn btn-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-controller="Oda" asp-action="OdaGuncelle" asp-route-OdaNo="@oda.OdaNo" type="button">Güncelle</a>
+                                    <button class="dropdown-item" href="" onclick="onaylaSil(@oda.OdaNo)">Sil</button>
+
+                                    @{
+                                        
+                                    bool disableButtonKapat = true;
+                                    if (oda.Durum == 0)
+                                    {
+                                        disableButtonKapat = false;
+                                    }
+                         
+                                        @if (oda.Durum != 3 )
+                                        {
+                                            <button @(disableButtonKapat ? "disabled" : "") class="dropdown-item" href="" onclick="onaylaKullanimaKapat(@oda.OdaNo)">Kullanıma Kapat</button>
+                                        }
+                                        else if (oda.Durum == 3)
+                                        {
+                                            <button class="dropdown-item" href="" onclick="onaylaKullanimaAc(@oda.OdaNo)">Kullanıma Aç</button>
+                                        }
+
+                                        @if (oda.Durum == 2)
+                                        {
+                                            <button class="dropdown-item" asp-controller="Oda" asp-action="OdaTemizlik" asp-route-OdaNo="@oda.OdaNo">Temizlik</button>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div data-toggle="modal" data-target="#odaModal-@oda.OdaNo">
+                            <div class="card-body btn">
+                                <div class="room-number" style="color: @OdaDurum(oda.Durum)">@oda.OdaNo</div>
+                                <div class="room-type">@oda.OdaTipi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="odaModal-@oda.OdaNo">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark d-flex justify-content-between">
+                                <h2 class="modal-title">ODA BİLGİLERİ</h2>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="font-weight-bold ">Oda No</td>
+                                            <td class="font-weight-bold ">: @oda.OdaNo</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Kat No</td>
+                                            <td class="font-weight-bold pt-1">: @oda.KatNo</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Oda Tipi</td>
+                                            <td class="font-weight-bold pt-1">: @oda.OdaTipi</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Durum</td>
+
+                                            @switch (oda.Durum)
+                                            {
+                                                case 3:
+                                                    <td class="font-weight-bold pt-1">: Kullanıma Kapalı</td>
+                                                    break;
+
+                                                case 0:
+                                                    <td class="font-weight-bold pt-1">: Kullanıma Hazır</td>
+                                                    break;
+
+                                                case 1:
+                                                    <td class="font-weight-bold pt-1">: Kullanımda</td>
+                                                    break;
+
+                                                case 2:
+                                                    <td class="font-weight-bold pt-1">: Temizlenmeli</td>
+                                                    break;
+                                            }
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Fiyat</td>
+                                            <td class="font-weight-bold pt-1">: @oda.Fiyat</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Alan</td>
+                                            <td class="font-weight-bold pt-1">: @oda.Alan</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Kapasite</td>
+                                            <td class="font-weight-bold pt-1">: @oda.Kapasite</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold pt-1">Yatak Düzeni</td>
+                                            <td class="font-weight-bold pt-1">: @oda.YatakDuzeni</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
+@functions {
+    string OdaDurum(int durum)
+    {
+        switch (durum)
+        {
+            case 0:
+                return "green";
+            case 1:
+                return "red";
+            case 2:
+                return "#faf60f";
+            case 3:
+                return "gray";
+            default:
+                return "";
+        }
+    }
+}
+<script>
+    function onaylaSil(odaNo) {
+        if (confirm('Bu odayı silmek istediğinize emin misiniz?')) {
+            window.location.href = '/Oda/OdaSil?OdaNo=' + odaNo; // Silme işlemi yapılacak URL
+        } else {
+            // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+        }
+    }
+
+    function onaylaKullanimaKapat(odaNo) {
+        if (confirm('Bu odanın kullanıma kapatılmasını istediğinize emin misiniz?')) {
+            window.location.href = '/Oda/OdaKullanimaKapat?OdaNo=' + odaNo; // Silme işlemi yapılacak URL
+        } else {
+            // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+        }
+    }
+
+    function onaylaKullanimaAc(odaNo) {
+        if (confirm('Bu odanın kullanıma açılmasını istediğinize emin misiniz?')) {
+            window.location.href = '/Oda/OdaKullanimaAc?OdaNo=' + odaNo; // Silme işlemi yapılacak URL
+        } else {
+            // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+        }
+    }
+</script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

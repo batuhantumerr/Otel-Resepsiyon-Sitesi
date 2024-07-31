@@ -1,0 +1,193 @@
+﻿@model MisafirDetay
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misafir Ekle</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #camera-container, #photo-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="post">
+        <div class="container pt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div id="camera-container">
+                        <video id="video" width="240" height="180" autoplay></video>
+                    </div>
+                    <div id="photo-container">
+                        <img id="photo" src="" alt="Captured Photo" width="240" height="180">
+                    </div>
+                    <div id="card-container" class="card bg-dark p-3" style="border-radius:20px;">
+                        <div class="card-header">
+                            <button type="button" id="scan-id-button" class="text-dark font-weight-bold btn-light"><i class="fas fa-search"> </i> Tara</button>
+                            <h2 class="text-center">Misafir Ekle</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label asp-for="MusteriId" class="p-0">Kimlik/Pasaport No :</label>
+                                <input id="MusteriId" asp-for="MusteriId" class="form-control" />
+                                <span asp-validation-for="MusteriId" class="text-danger"></span>
+                                <div class="row pt-2">
+                                    <div class="col-md-6">
+                                        <label asp-for="Ad">Ad :</label>
+                                        <input id="Ad" asp-for="Ad" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="Soyad">Soyad :</label>
+                                        <input id="Soyad" asp-for="Soyad" class="form-control" />
+                                    </div>
+                                </div>
+                                <label asp-for="DogumTarihi" class="pt-2">Doğum Tarihi :</label>
+                                <input id="DogumTarihi" asp-for="DogumTarihi" class="form-control" />
+                                <div class="row pt-2">
+                                    <div class="col-md-6">
+                                        <label asp-for="Cinsiyet">Cinsiyet :</label>
+                                        <input id="Cinsiyet" asp-for="Cinsiyet" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="Uyruk">Uyruk :</label>
+                                        <input id="Uyruk" asp-for="Uyruk" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-5">
+                                <button type="submit" class="btn btn-lg btn-light" style="width:150px">Ekle</button>
+                                <button asp-controller="Rezervasyon" asp-action="KullanimdaRezervasyonlar" class="btn btn-lg btn-light ml-3" style="width:150px">Geri Dön</button>
+                            </div>
+                            <div class="mt-4" id="ocr-result-container">
+                                <p id="ocr-result" class="text-light"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        const scanIdButton = document.getElementById('scan-id-button');
+        const cameraContainer = document.getElementById('camera-container');
+        const video = document.getElementById('video');
+        const photo = document.getElementById('photo');
+        const ocrResult = document.getElementById('ocr-result');
+
+        scanIdButton.addEventListener('click', () => {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                    cameraContainer.style.display = 'none';
+                    return new Promise(resolve => {
+                        setTimeout(() => {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            const context = canvas.getContext('2d');
+                            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            photo.src = canvas.toDataURL('image/png');
+                            video.srcObject.getTracks().forEach(track => track.stop());
+                            cameraContainer.style.display = 'none';
+                            resolve(photo.src);
+                        }, 2000); // 2 saniye bekleme süresi
+                    });
+                })
+                .then(photoSrc => {
+                    const imageBase64 = photoSrc.split(',')[1];
+                    const body = {
+                        requests: [
+                            {
+                                image: {
+                                    content: imageBase64
+                                },
+                                features: [
+                                    {
+                                        type: 'TEXT_DETECTION'
+                                    }
+                                ]
+                            }
+                        ]
+                    };
+
+                    return fetch(`https://vision.googleapis.com/v1/images:annotate?key=${"AIzaSyCqfzwOna6paM0W3yistriMwhiLODjuHfk"}`, {
+
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(body)
+                    });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const textAnnotations = data.responses[0].textAnnotations;
+                    if (textAnnotations && textAnnotations.length > 0) {
+                        const ocrText = textAnnotations[0].description;
+                        extractDataFromText(ocrText);
+                    } else {
+                        ocrResult.textContent = "Metin bulunamadı.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error processing photo:', error);
+                });
+        });
+
+        function extractDataFromText(text) {
+            const tcPattern = /<(\d{11})<</;
+            const namePattern = /<<([A-Za-z]+(?:<[A-Za-z]+)*)<</;
+            const surnamePattern = /<<\d([A-Za-z]+)<</;
+            const birthdayPattern = /<<<(\d{6})/;
+            const cinsiyetPattern = /<<<\d{7}([A-Za-z])/;
+            const uyrukPattern = /I<([A-Z]{3})/;
+
+            text = text.replace(/\s+/g, '');
+
+            const tcMatch = text.match(tcPattern);
+            const nameMatch = text.match(namePattern);
+            const surnameMatch = text.match(surnamePattern);
+            const birthdayMatch = text.match(birthdayPattern);
+            const cinsiyetMatch = text.match(cinsiyetPattern);
+            const uyrukMatch = text.match(uyrukPattern);
+
+            if (tcMatch) {
+                document.getElementById('MusteriId').value = tcMatch[1];
+            }
+
+            if (nameMatch) {
+                document.getElementById('Ad').value = nameMatch[1].replace(/</g, ' ');
+            }
+
+            if (surnameMatch) {
+                document.getElementById('Soyad').value = surnameMatch[1].replace(/</g, ' ');
+            }
+
+            if (birthdayMatch) {
+                const birthday = birthdayMatch[1];
+                const day = birthday.slice(4, 6);
+                const month = birthday.slice(2, 4);
+                const year = birthday.slice(0, 2);
+                const currentYear = new Date().getFullYear();
+                const currentYearSuffix = parseInt(currentYear.toString().slice(-2));
+                const century = currentYearSuffix <= year ? '19' : '20';
+                document.getElementById('DogumTarihi').value = `${day}/${month}/${century}${year}`;
+            }
+
+            if (cinsiyetMatch) {
+                document.getElementById('Cinsiyet').value = cinsiyetMatch[1] === "M" ? "E" : "K";
+            }
+
+            if (uyrukMatch) {
+                document.getElementById('Uyruk').value = uyrukMatch[1];
+            }
+        }
+    </script>
+
+</body>
+</html>

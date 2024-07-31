@@ -1,0 +1,71 @@
+﻿@model List<Oda>
+
+<section class="content-header bg-dark">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6 mt-2 ml-3">
+                <h1 class="text-uppercase font-weight-bold">Oda Tipi Listesi</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example2" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                ODA TİPİ
+                            </th>
+                            <th>
+                                FİYAT
+                            </th>
+                            <th>
+                                ALAN
+                            </th>
+                            <th>
+                                ADET
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var oda in Model)
+                        {
+                            <tr>
+                                <td>@oda.OdaTipi</td>
+                                <td>@oda.Fiyat</td>
+                                <td>@oda.Alan</td>
+                                <td>@oda.BosOdaSayisi</td>
+                                <td>
+                                    <button onclick="onaylaOdaTipiGuncelle('@oda.OdaTipi')" type="button" class="btn btn-dark">Seç</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a asp-controller="Rezervasyon" asp-action="AktifRezervasyonlar" class="btn btn-lg btn-dark ml-4" style="width:200px">Geri Dön</a>
+    </div>
+</div>
+<script>
+    function onaylaOdaTipiGuncelle(odaTipi) {
+        if (confirm('Bu oda tipini seçmek istediğinize emin misiniz?')) {
+            window.location.href = '/Rezervasyon/RezOdaTipiSec?OdaTipi=' + odaTipi; // Silme işlemi yapılacak URL
+        } else {
+            // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+        }
+    }
+</script>
+

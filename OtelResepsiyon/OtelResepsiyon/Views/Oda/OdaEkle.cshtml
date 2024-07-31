@@ -1,0 +1,125 @@
+﻿@model Oda
+
+<form method="post">
+    <div class="container pt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-dark p-3" style="border-radius:20px;">
+                    <div class="card-header ">
+                        <h2 class="text-center">Yeni Oda Ekle</h2>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label asp-for="OdaNo">Oda No</label>
+                                    <input asp-for="OdaNo" class="form-control" />
+                                    <span asp-validation-for="OdaNo" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="KatNo">Kat No</label>
+                                    <input asp-for="KatNo" class="form-control" />
+                                </div>
+                            </div>
+
+                            <label asp-for="OdaTipi" class="pt-3">Oda Tipi</label>
+                            <select name="OdaTipi" id="OdaTipi" class="form-control">
+
+                                <option value="Seçiniz">Seçiniz</option>
+
+                                <option value="Ekonomik Manzarasız">Ekonomik Manzarasız</option>
+
+                                <option value="Standart Şehir Manzaralı">Standart Şehir Manzaralı</option>
+                                <option value="Standart Havuz Manzaralı">Standart Havuz Manzaralı</option>
+                                <option value="Standart Orman Manzaralı">Standart Orman Manzaralı</option>
+                                <option value="Standart Bahce Manzaralı">Standart Bahce Manzaralı</option>
+
+                                <option value="Lüx Deniz Manzaralı">Lüx Deniz Manzaralı</option>
+                                <option value="Lüx Havuz Manzaralı">Lüx Havuz Manzaralı</option>
+                                <option value="Lüx Şehir Manzaralı">Lüx Şehir Manzaralı</option>
+                                <option value="Lüx Orman Manzaralı">Lüx Orman Manzaralı</option>
+                                <option value="Lüx Bahçe Manzaralı">Lüx Bahçe Manzaralı</option>
+
+                                <option value="Suit Deniz Manzaralı">Suit Deniz Manzaralı</option>
+                                <option value="Suit Havuz Manzaralı">Suit Havuz Manzaralı</option>
+                                <option value="Suit Şehir Manzaralı">Suit Şehir Manzaralı</option>
+                                <option value="Suit Orman Manzaralı">Suit Orman Manzaralı</option>
+                                <option value="Suit Bahçe Manzaralı">Suit Bahçe Manzaralı</option>
+
+                                <option value="Studio Deniz Manzaralı">Studio Deniz Manzaralı</option>
+                                <option value="Studio Havuz Manzaralı">Studio Havuz Manzaralı</option>
+                                <option value="Studio Şehir Manzaralı">Studio Şehir Manzaralı</option>
+                                <option value="Studio Orman Manzaralı">Studio Orman Manzaralı</option>
+                                <option value="Studio Bahçe Manzaralı">Studio Bahçe Manzaralı</option>
+
+                                <option value="Kral Dairesi">Kral Dairesi</option>
+
+                                <option value="Diğer">Diğer</option>
+                            </select>
+
+                            <div id="otherOptionContainer" style="display:none;">
+                                <label for="DigerOdaTipi" class="pt-3">Diğer Oda Tipi</label>
+                                <input type="text" name="otherOdaTipi" id="otherOdaTipi" class="form-control">
+                            </div>
+
+                            <label asp-for="YatakDuzeni" class="pt-3">Yatak Düzeni</label>
+                            <input asp-for="YatakDuzeni" class="form-control" />
+
+                            <div class="row pt-3">
+                                <div class="col-md-4">
+                                    <label asp-for="Fiyat">Fiyat</label>
+                                    <input asp-for="Fiyat" class="form-control" />
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label asp-for="Alan">Alan</label>
+                                    <input asp-for="Alan" class="form-control" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="Kapasite">Kapasite</label>
+                                    <input asp-for="Kapasite" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-lg btn-light" style="width:150px">Ekle</button>
+                            <a asp-controller="Oda" asp-action="Index" class="btn btn-lg btn-light ml-3" style="width:150px">Geri Dön</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+<script>
+    document.getElementById("OdaTipi").addEventListener("change", function () {
+        var otherOptionContainer = document.getElementById("otherOptionContainer");
+        var otherOdaTipiInput = document.getElementById("DigerOdaTipi");
+
+        if (this.value === "Diğer") {
+            otherOptionContainer.style.display = "block";
+            otherOdaTipiInput.required = true;
+        } else {
+            otherOptionContainer.style.display = "none";
+            otherOdaTipiInput.required = false;
+        }
+    });
+
+
+
+    // Form submit olduğunda
+    document.querySelector('form').addEventListener('submit', function (event) {
+        // "Diğer" seçeneği seçiliyse ve otherOdaTipiInput boş değilse
+        if (document.getElementById("OdaTipi").value === "Diğer" && document.getElementById("otherOdaTipi").value.trim() !== "") {
+            // otherOdaTipiInput değerini OdaTipi inputuna kopyala
+            document.querySelector('option[value="Diğer"]').value = document.getElementById("otherOdaTipi").value.trim();
+        }
+    });
+</script>

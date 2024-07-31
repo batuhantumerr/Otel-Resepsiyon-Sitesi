@@ -1,0 +1,65 @@
+﻿@model Rezervasyon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OtelResepsiyon</title>
+
+
+</head>
+
+<body>
+<form action="BosOdaTipleriGoster" method="post" >
+        <section class="gradient-custom" >
+        <div class="py-5">
+            <div class="row d-flex justify-content-center align-items-center ">
+                <div class="col-md-5">
+                    <div class="card bg-dark text-white p-3" style="border-radius: 1rem; height: 550px;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-2 mt-md-2 pb-5">
+
+                                <h2 class="fw-bold mb-4 text-uppercase">Uygun oda bul</h2>
+                                
+                                <div class="form-outline form-white mb-4 text-left">
+                                <label asp-for="GirisTarihi" class="form-label text-">Giriş Tarihi</label>
+                                <input asp-for="GirisTarihi" type="date" class="form-control form-control-lg" />
+                                </div>
+
+                                <div class="form-outline form-white mb-4 text-left">
+                                <label asp-for="CikisTarihi" class="form-label">Çıkış Tarihi</label>
+                                <input asp-for="CikisTarihi" class="form-control form-control-lg" type="date" />
+                                </div>
+
+                            <div class="form-outline form-white mb-4 text-left">
+                                <label asp-for="MisafirSayisi" class="form-label">Misafir Sayısı</label>
+                                <input asp-for="MisafirSayisi" class="form-control form-control-lg" type="number" min="1" max="6" />
+                            </div>
+
+                                <p class="mb-0">
+                                    <button class="btn btn-light btn-lg px-5 mt-3" type="submit">Bul</button>
+                                </p>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </form>
+</body>
+</html>
+
+<style>
+    body {
+        background-image: url('../../wwwroot/images.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+</style>

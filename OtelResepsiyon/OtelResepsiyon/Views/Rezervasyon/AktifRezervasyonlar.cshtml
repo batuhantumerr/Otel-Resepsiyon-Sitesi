@@ -1,0 +1,128 @@
+﻿@model List<Rezervasyon>
+
+<!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header bg-dark">
+        <div class="container-fluid ">
+            <div class="row mb-2 ">
+                <div class="col-sm-6 mt-2 ml-3">
+                <h1 class="font-weight-bold">AKTİF REZERVASYONLAR</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="rezList" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>GİRİŞ TARİHİ</th>
+                                <th>ÇIKIŞ TARİHİ</th>
+                                <th>AD SOYAD</th>
+                                <th>TELEFON</th>
+                                <th>ODA TİPİ</th>
+                                @* <th>Misafir Sayısı</th> *@
+                                <th>DURUM</th>
+                                <th>ÖDENEN TUTAR</th>
+                                <th>TOPLAM TUTAR</th>
+                                <th></th>
+
+                                
+                            </tr>
+                        </thead>
+
+    <tbody>
+                        
+        @foreach(var rezervasyon in Model)
+        {
+            <tr>
+                <td>@rezervasyon.RezervasyonId</td>
+                <td>@rezervasyon.GirisTarihi.ToShortDateString()</td>
+                <td>@rezervasyon.CikisTarihi.ToShortDateString()</td>
+                <td>@rezervasyon.Ad_Soyad.ToUpper()</td>
+                <td>@rezervasyon.Telefon</td>
+                <td>@rezervasyon.OdaTipi</td>
+                @* <td>@rezervasyon.MisafirSayisi</td> *@
+                                
+                                    @switch (rezervasyon.Durum)
+                                    {
+                                        case 0:
+                                            <td>Aktif</td>
+                                            break;
+
+                                        case 1:
+                                            <td>Kullanımda</td>
+                                            break;
+
+                                        case 2:
+                                            <td>Geçmiş</td>
+                                            break;
+
+                                        case 3:
+                                            <td>İptal</td>
+                                            break;
+                                    }
+                                
+                <td>@rezervasyon.OdenenTutar</td>
+                <td>@rezervasyon.ToplamTutar</td>
+                                
+
+                                <td><div class="dropdown">
+                                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            İşlem
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" asp-controller="Rezervasyon" asp-action="RezervasyonTarihGuncelle" asp-route-RezervasyonId="@rezervasyon.RezervasyonId">Tarih Güncelle</a>
+                                        <a class="dropdown-item" asp-controller="Rezervasyon" asp-action="RezBosOdaTipleri" asp-route-RezervasyonId="@rezervasyon.RezervasyonId">Oda Tipi Güncelle</a>
+                                        <a class="dropdown-item" asp-controller="Rezervasyon" asp-action="RezervasyonBilgiGuncelle" asp-route-RezervasyonId="@rezervasyon.RezervasyonId">Bilgi Güncelle</a>
+                                        <button class="dropdown-item" onclick="onaylaIptal(@rezervasyon.RezervasyonId)">İptal Et</button>
+                                            @{
+                                                
+                                                if (rezervasyon.GirisTarihi == DateTime.Today)
+                                                {
+                                                    <button href="" class="dropdown-item"  onclick="CheckIn(@rezervasyon.RezervasyonId)">Check In</button>  
+                                                }
+                                            }
+                                                                                  
+                                    </div>
+                                    </div>
+                                </td>          
+            </tr>
+        }
+    </tbody>
+    </table>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+<script>
+    function onaylaIptal(rezervasyonId) {
+        if (confirm('Bu rezervasyonu iptal etmek istediğinize emin misiniz?')) {
+            window.location.href = '/Rezervasyon/RezervasyonIptal?RezervasyonId=' + rezervasyonId; // Silme işlemi yapılacak URL    
+        } else {
+            // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+        }
+    }
+
+    function CheckIn(rezervasyonId){
+                if (confirm('Check in yapmak istediğinize emin misiniz?')) {
+                    window.location.href = '/Rezervasyon/BosOdalariGoster?RezervasyonId=' + rezervasyonId;
+                } else {
+                    // Kullanıcı onay vermezse bir işlem yapmayabilirsiniz veya isteğe bağlı bir mesaj gösterebilirsiniz.
+                }
+        
+    }
+
+    </script>
+
+   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
